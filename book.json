@@ -1,0 +1,16 @@
+{
+    "plugins": [
+        "highlight",
+        "sequence",
+        "tex",
+        "copy-code",
+        "comment",
+        "flow",
+        "image-zoom"
+    ],
+    "pluginsConfig": {
+        "theme-default": {
+            "auto_open": true
+        }
+    }
+}
