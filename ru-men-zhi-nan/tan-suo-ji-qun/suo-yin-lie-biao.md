@@ -1,10 +1,16 @@
+# 索引列表
+
 现在让我们来看看我们的索引：
+
 ```bash
 curl -X GET "localhost:9200/_cat/indices?v"
 ```
+
 响应：
-```
+
+```text
 health status index uuid pri rep docs.count docs.deleted store.size pri.store.size
 ```
 
 这就意味着在这个集群中还没有索引。
+

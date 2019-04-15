@@ -1,78 +1,92 @@
-可以从<a href="http://www.elastic.co/downloads" target="_blank">http://www.elastic.co/downloads</a>下载二进制文件，以及过去发布的所有版本。对于每个版本，Windows、Linux和MacOS都可以使用平台相关的存档版本，以及Linux的DEB和RPM包，以及Windows的MSI安装包。
+# 安装
 
-### 在Windows中安装
-对于Windows用户，建议使用MSI安装程序包。该安装包包含一个图形用户界面(GUI)，指导您完成安装过程。
+可以从[http://www.elastic.co/downloads](http://www.elastic.co/downloads)下载二进制文件，以及过去发布的所有版本。对于每个版本，Windows、Linux和MacOS都可以使用平台相关的存档版本，以及Linux的DEB和RPM包，以及Windows的MSI安装包。
 
-从<a href="https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.0.0.msi" target="_blank">https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.0.0.msi</a>下载Elasticsearch 7.0.0 MSI。
+## 在Windows中安装
+
+对于Windows用户，建议使用MSI安装程序包。该安装包包含一个图形用户界面\(GUI\)，指导您完成安装过程。
+
+从[https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.0.0.msi](https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.0.0.msi)下载Elasticsearch 7.0.0 MSI。
 
 双击下载的文件来启动安装。在第一个屏幕中，选择部署目录：
 
-![elasticsearch安装](http://source.iftrue.cn/elasticsearch/msi_installer_locations.png)
+![elasticsearch&#x5B89;&#x88C5;](http://source.iftrue.cn/elasticsearch/msi_installer_locations.png)
 
 选择是作为服务安装，还是需要手动启动Elasticsearch。要与Linux示例保持一致，请选择不将其安装为服务：
 
-![elasticsearch安装](http://source.iftrue.cn/elasticsearch/msi_installer_no_service.png)
+![elasticsearch&#x5B89;&#x88C5;](http://source.iftrue.cn/elasticsearch/msi_installer_no_service.png)
 
 对于配置，可以使用默认值：
 
-![elasticsearch安装](http://source.iftrue.cn/elasticsearch/msi_installer_configuration.png)
+![elasticsearch&#x5B89;&#x88C5;](http://source.iftrue.cn/elasticsearch/msi_installer_configuration.png)
 
 同样，为了与tar示例保持一致，取消选中所有插件，不安装任何插件：
 
-![elasticsearch安装](http://source.iftrue.cn/elasticsearch/msi_installer_plugins.png)
+![elasticsearch&#x5B89;&#x88C5;](http://source.iftrue.cn/elasticsearch/msi_installer_plugins.png)
 
 点击install按钮后，将安装Elasticsearch：
 
-![elasticsearch安装](http://source.iftrue.cn/elasticsearch/msi_installer_success.png)
+![elasticsearch&#x5B89;&#x88C5;](http://source.iftrue.cn/elasticsearch/msi_installer_success.png)
 
 默认情况下，Elasticsearch将安装在%PROGRAMFILES%\Elastic\Elasticsearch。
 
 运行CMD，进入bin目录如下：
+
 ```bash
 cd %PROGRAMFILES%\Elastic\Elasticsearch\bin
 ```
 
 或者从PowerShell进入目录：
+
 ```bash
 cd $env:PROGRAMFILES\Elastic\Elasticsearch\bin
 ```
 
 启动节点和单个集群：
+
 ```bash
 .\elasticsearch.exe
 ```
 
-### Java（JVM）版本
+## Java（JVM）版本
+
 Elasticsearch使用Java构建，并在每个发行版中包含了OpenJDK。绑定的JVM存在于Elasticsearch主目录的jdk目录中。
 
-要使用自己的Java版本，需要设置JAVA_HOME环境变量。当使用自己的版本时，可能会删除绑定的JVM目录。如果不使用绑定的JVM，建议安装Java version 1.8.0_131或Java 8发行版系列中的更高版本。建议使用受支持的Java LTS版本。如果使用known-bad版本，Elasticsearch将拒绝启动。
+要使用自己的Java版本，需要设置JAVA\_HOME环境变量。当使用自己的版本时，可能会删除绑定的JVM目录。如果不使用绑定的JVM，建议安装Java version 1.8.0\_131或Java 8发行版系列中的更高版本。建议使用受支持的Java LTS版本。如果使用known-bad版本，Elasticsearch将拒绝启动。
 
-### 在Linux中安装示例
+## 在Linux中安装示例
+
 下载Elasticsearch 7.0.0 Linux tar，如下所示：
+
 ```bash
 curl -L -O https://artifacts.elastic.co/downloads/elasticsearch/elasticsearch-7.0.0-linux-x86_64.tar.gz
 ```
 
 解包，如下：
+
 ```bash
 tar -xvf elasticsearch-7.0.0-linux-x86_64.tar.gz
 ```
 
 进入bin目录如下:
+
 ```bash
 cd elasticsearch-7.0.0/bin
 ```
 
 启动节点和单个集群：
+
 ```bash
 ./elasticsearch
 ```
 
 不可以使用root账号启动elasticsearch，可以使用账号elasticsearch（需要相应文件权限）启动。
 
-### 成功运行的节点
+## 成功运行的节点
+
 如果安装顺利，您应该会看到一串如下所示的消息：
-```
+
+```text
 [2019-01-08T14:41:34,284][INFO ][o.e.p.PluginsService     ] [localhost.localdomain] loaded module [x-pack-sql]
 [2019-01-08T14:41:34,284][INFO ][o.e.p.PluginsService     ] [localhost.localdomain] loaded module [x-pack-watcher]
 [2019-01-08T14:41:34,284][INFO ][o.e.p.PluginsService     ] [localhost.localdomain] no plugins loaded
@@ -93,7 +107,7 @@ cd elasticsearch-7.0.0/bin
 [2019-01-08T14:41:40,593][INFO ][o.e.n.Node               ] [localhost.localdomain] started
 ```
 
-我们可以看到名为“localhost.localdomain”的节点(在您的示例中是一组不同的字符)已经启动，并将自己选为单个集群中的主机。现在还不用了解master是什么意思。这里最重要的是，我们已经在一个集群中启动了一个节点。
+我们可以看到名为“localhost.localdomain”的节点\(在您的示例中是一组不同的字符\)已经启动，并将自己选为单个集群中的主机。现在还不用了解master是什么意思。这里最重要的是，我们已经在一个集群中启动了一个节点。
 
 可以修改集群或节点名。在启动Elasticsearch时，可以从命令行执行以下操作：
 
@@ -101,4 +115,5 @@ cd elasticsearch-7.0.0/bin
 ./elasticsearch -Ecluster.name=my_cluster_name -Enode.name=my_node_name
 ```
 
-还要注意标记为http的行，其中包含关于我们的节点可以访问的http地址(127.0.0.1)和端口(9200)的信息。默认情况下，Elasticsearch使用端口9200提供对其REST API的访问。如果需要，这个端口是可配置的。
+还要注意标记为http的行，其中包含关于我们的节点可以访问的http地址\(127.0.0.1\)和端口\(9200\)的信息。默认情况下，Elasticsearch使用端口9200提供对其REST API的访问。如果需要，这个端口是可配置的。
+
